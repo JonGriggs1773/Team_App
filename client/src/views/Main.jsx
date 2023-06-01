@@ -29,7 +29,7 @@ const Main = () => {
                 <Routes>
                     <Route element = {<PlayerList playerList = {playerList} setPlayerList = {setPlayerList}/>} path = "/" />
                     <Route element = {<DisplayGame playerList = {playerList} setPlayerList = {setPlayerList} />} path = "/status/:game" />
-                    <Route element = {<Form />} path = "/form" />
+                    <Route element = {<Form playerList = {playerList} setPlayerList = {setPlayerList} />} path = "/form" />
                     <Route element = {<Position positions = {positions} />} path = "/chart" />
                 </Routes>
             </BrowserRouter>

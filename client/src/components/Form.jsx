@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-const Form = () => {
+const Form = (props) => {
     const [_name, setName] = useState("")
     const [preferredPosition, setPreferredPosition] = useState("")
     const [errors, setErrors] = useState({})
+    const {playerList, setPlayerList} = props
     const navigate = useNavigate()
 
 
@@ -29,16 +30,18 @@ const Form = () => {
                 preferredPosition: preferredPosition
             })
             .then(res => {
-                console.log("Form Results: ", res.data)
-                navigate("/")
+                console.log("Form Results: ", res.data.player)
+                setPlayerList([...playerList, res.data.player])
             })
             .catch(err => console.log(err))
+            navigate("/")
         }
         else {
             setErrors({
                 _name: "Name must be at least 2 characters",
                 required: "Name is a required field"
             })
+            navigate("/form")
         }
     }
 
